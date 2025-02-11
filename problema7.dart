@@ -1,37 +1,27 @@
 import 'dart:io';
 
-void main() {
-
-  List<String> listaCadenas = [];
-
-  print("Ingrese las cadenas (escriba 'fin' para terminar):");
-
-  
+List<String> capturarCadenas() {
+  List<String> cadenas = [];
+  print("Ingrese cadenas (escriba 'fin' para terminar):");
   while (true) {
     String entrada = stdin.readLineSync()!.trim();
-    if (entrada.toLowerCase() == 'fin') {
-      break;
-    }
-    listaCadenas.add(entrada); 
+    if (entrada.toLowerCase() == 'fin') break;
+    if (entrada.isNotEmpty) cadenas.add(entrada);
   }
+  return cadenas;
+}
 
-
+void mostrarYContar(List<String> cadenas) {
   int totalPalabras = 0;
-
-
-  for (String cadena in listaCadenas) {
-    
-    List<String> palabras = cadena.split(' ');
-    
-    totalPalabras += palabras.length;
-  }
-
-
   print("\nCadenas ingresadas:");
-  for (int i = 0; i < listaCadenas.length; i++) {
-    print("${i + 1} - ${listaCadenas[i]}");
+  for (int i = 0; i < cadenas.length; i++) {
+    print("${i + 1} - ${cadenas[i]}");
+    totalPalabras += cadenas[i].split(' ').length;
   }
+  print("\nTotal de palabras: $totalPalabras");
+}
 
-
-  print("\nTotal de palabras en todas las cadenas: $totalPalabras");
+void main() {
+  var cadenas = capturarCadenas();
+  mostrarYContar(cadenas);
 }
