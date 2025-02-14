@@ -26,5 +26,17 @@ print("\n El mes numero $numeroMes es $nombreMes");
 mesesDelAnio.forEach((numero, nombre) {
   print('$numero: $nombre');
 });
+void main() {
+  // Crear un Map<String, dynamic> para representar un medicamento
+  Map<String, dynamic> medicamento = {
+    'id_medicamento': 101,
+    'nombre': 'Paracetamol',
+    'precio': 5.99,
+  };
 
+  // Mostrar los datos del medicamento usando forEach
+  medicamento.forEach((clave, valor) {
+    print('$clave: $valor');
+  });
+}
 }
